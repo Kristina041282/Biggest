@@ -36,12 +36,8 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
-    public void add(String name, int price, int count){
-        add(name, price, count, 0);
-    }
-
-    public void add(int price, String name, int count) {
-        add(name, price, count, 0);
+    public void add(String name, int price){
+        add(name, price,0,0);
     }
 
     public void add(String name, int price, int count, double weight) {
