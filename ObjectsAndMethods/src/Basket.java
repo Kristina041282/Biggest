@@ -19,8 +19,8 @@ public class Basket {
 
     public Basket(String items, int totalPrice) {
         this();
-        this.items = this.items + items;
-        this.totalPrice = totalPrice;
+        this. items = this.items + items;
+        this. totalPrice = totalPrice;
 
     }
 
@@ -37,7 +37,7 @@ public class Basket {
     }
 
     public void add(String name, int price) {
-        add(name, price, count, 1);
+        add(name, price, count, 0);
     }
 
     public void add(String name, int price, int count, double weight) {
@@ -52,10 +52,9 @@ public class Basket {
             System.out.println("Error occured :(");
             return;
         }
-        items = items + "\n" + name + " - " +
-            count + " шт. - " + price + weight;
+        items = items + "\n" + name + " - " + count + " шт.- " + price + " - " + weight;
         totalPrice = totalPrice + count * price;
-        totalWeight = totalWeight + Basket.count;
+        totalWeight = totalWeight + weight * count;
     }
 
 
