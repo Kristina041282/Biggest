@@ -19,8 +19,8 @@ public class Basket {
 
     public Basket(String items, int totalPrice) {
         this();
-        this. items = this.items + items;
-        this. totalPrice = totalPrice;
+        this.items = this.items + items;
+        this.totalPrice = totalPrice;
 
     }
 
@@ -36,8 +36,8 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
-    public void add(String name, int price){
-        add(name, price,0,0);
+    public void add(String name, int price) {
+        add(name, price, 0, 0);
     }
 
     public void add(String name, int price, int count, double weight) {
