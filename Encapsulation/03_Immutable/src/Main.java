@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        CarPark carpark = new CarPark("Porsh", "picap");
-        carpark.print("Название машины: ");
+       Book book = new Book("Журавли", "Янковский", 25, 34);
+        book.print("Название книги: ");
 
     }
 }
