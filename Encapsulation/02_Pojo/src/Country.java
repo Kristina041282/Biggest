@@ -3,7 +3,8 @@ public class Country {
     public int population;      // Численность населения.
     public int areaSquareKm;     //Площадь в квадратных километрах.
     public String nameCapital;   // Название столицы.
-    public String accessSea;   // Наличие выхода к морю.
+
+    public boolean accessSea;    // Выход к морю.
 
     public Country(String nameCountry) {
         this.nameCountry = nameCountry;
@@ -33,16 +34,18 @@ public class Country {
     public String getNameCapital() {
         return nameCapital;
     }
-    public void setAccessSea(String accessSea) {
+    public void setAccessSea(boolean accessSea) {
         this.accessSea = accessSea;
     }
-    public String getAccessSea() {
+    public boolean isAccessSea() {
         return accessSea;
     }
+
     public void print(String tittle) {
-        nameCapital = nameCapital;
+        System.out.println(tittle);
         System.out.println(nameCountry);
     }
+
 }
 
 
