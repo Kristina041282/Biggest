@@ -4,7 +4,6 @@ public class Main {
         CarPark carpark = new CarPark("Porsh", "picap");
         carpark.print("Название машины: ");
 
-
     }
 }
 

@@ -1,15 +1,14 @@
 public class CarPark {
 
-    public String machineName;   // название машины.
-    public String machineBodyType;  // тип кузова.
-    public int carMileageh;      // пробег машины.
-    public String machineColor;  // цвет машины.
+    private String machineName;   // название машины.
+    private String machineBodyType;  // тип кузова.
+    private int carMileageh;      // пробег машины.
+    private String machineColor;  // цвет машины.
 
     public CarPark(String machineName, String machineBodyType) {
         this.machineName = machineName;
         this.machineBodyType = machineBodyType;
     }
-
 
     public void setMachineName(String machineName) {
         this.machineName = machineName;
@@ -40,7 +39,8 @@ public class CarPark {
     }
 
     public void print(String tittle) {
-        System.out.println("Название машины: " + machineName + "\n" + "Тип кузова: " + machineBodyType );
+        System.out.println(tittle);
+        System.out.println(machineName + "\n" + "Тип кузова: " + machineBodyType );
     }
 }
 
