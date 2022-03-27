@@ -1,18 +1,20 @@
 public class Main {
-
     public static void main(String[] args) {
 
-        Basket basket = new Basket();
-        basket.add("Milk", 40,7,5);
-        basket.print("Корзина 1");
+        Dimensions dimensions = new Dimensions();//создали объект Dimensions.
 
-        basket = new Basket(1000);
-        basket.add("Sugar", 35,4,6);
-        basket.print("Корзина 2");
+        CourierService courierService = new CourierService("ул.Гете", 25,
+                "kpr", dimensions);
+        //добавила эту информацию в компанию и передала в конструктор адрес доставки и габариты груза.
 
-        basket = new Basket("Book", 50);
-        basket.add("lamp", 50,9,5);
-        basket.print("Корзина 3");
+        System.out.println(courierService);//вывожу информацию о грузе (которая в себе содержит
+        //габариты груза).
+
+
+
+
+
+
 
 
     }
