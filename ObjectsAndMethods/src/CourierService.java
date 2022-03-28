@@ -40,7 +40,6 @@ public class CourierService {
                 "адрес доставки: " + deliveryAddress + "\n" +
                 "можно ли переворачивать:" + possibleToFlip + "\n" +
                 "регистрационный номер: " + registrationNumber + "\n" +
-                "хрупкий ли товар: " + productBrittle + "\n" +
-                "габариты груза: " +  "\n" + dimensions;
+                "хрупкий ли товар: " + productBrittle + "\n" + dimensions;
     }
 }
