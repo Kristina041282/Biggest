@@ -1,11 +1,11 @@
 public class CourierService {
 
-    public int weight; //масса груза
-    public String deliveryAddress; //адрес доставки
-    public boolean possibleToFlip = true; //можно ли переворачивать
-    public String registrationNumber; //регистрационный номер
-    public boolean productBrittle = true; //товар хрупкий
-    public Dimensions dimensions;  //габариты груза
+    private final int weight; //масса груза
+    private final String deliveryAddress; //адрес доставки
+    private boolean possibleToFlip = true; //можно ли переворачивать
+    private final String registrationNumber; //регистрационный номер
+    private boolean productBrittle = true; //товар хрупкий
+    private final Dimensions dimensions;  //габариты груза
 
     public CourierService(String deliveryAddress, int weight, String registrationNumber,
                           Dimensions dimensions) {
@@ -15,6 +15,19 @@ public class CourierService {
         this.registrationNumber = registrationNumber;
         this.productBrittle = productBrittle;
         this.dimensions = dimensions;
+    }
+
+    public CourierService setWeight(int weight) { // чтобы сеттеры возвращали нам новые объекты класса.
+        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+    }
+    public CourierService setDeliveryAddress(String deliveryAddress) {
+        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+    }
+    public CourierService setDimensions(Dimensions dimensions) {
+        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+    }
+    public CourierService setRegistrationNumber(String registrationNumber) {
+        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
     }
 
     public int getWeight() {

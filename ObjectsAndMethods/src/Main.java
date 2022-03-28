@@ -3,9 +3,10 @@ public class Main {
 
         Dimensions dimensions = new Dimensions();//создали объект Dimensions.
 
-        CourierService courierService = new CourierService("ул.Гете", 25,
-                "kpr", dimensions);
-        //добавила эту информацию в кур.службу и передала в конструктор адрес доставки и габариты груза.
+        CourierService courierService = new CourierService("Гете", 15,
+                "HGF", dimensions);
+        //добавила эту информацию в курьер.службу, передала в конструктор адрес доставки, массу,
+        // регистр.номер и габариты груза.
 
         System.out.println(courierService);//вывожу информацию о грузе (которая в себе содержит
         //габариты груза).

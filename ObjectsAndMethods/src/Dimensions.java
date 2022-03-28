@@ -3,8 +3,8 @@ public class Dimensions {
     private final int width;   //ширина
     private final int height;  // высота
     private final int length;  //длина
-    private int sum; // ширина * длину
-    private Object dimensions;
+    private  int sum;          // ширина * длину
+    private  Object dimensions;
 
     public Dimensions(int width, int height, int length) {  // Для этого создала конструктор.
         this.width = width;
