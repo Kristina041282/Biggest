@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
 
-        Dimensions dimensions = new Dimensions();//создали объект Dimensions.
+        CargoDimensions cargodimensions = new CargoDimensions(2,2,2);
+        //создали объект Dimensions.
 
         CourierService courierService = new CourierService("Гете", 15,
-                "HGF", dimensions);
+                "HGF", cargodimensions);
         //добавила эту информацию в курьер.службу, передала в конструктор адрес доставки, массу,
         // регистр.номер и габариты груза.
 

@@ -5,29 +5,29 @@ public class CourierService {
     private boolean possibleToFlip = true; //можно ли переворачивать
     private final String registrationNumber; //регистрационный номер
     private boolean productBrittle = true; //товар хрупкий
-    private final Dimensions dimensions;  //габариты груза
+    private final CargoDimensions cargoDimensions;  //габариты груза
 
     public CourierService(String deliveryAddress, int weight, String registrationNumber,
-                          Dimensions dimensions) {
+                          CargoDimensions cargoDimensions) {
         this.weight = weight;
         this.deliveryAddress = deliveryAddress;
         this.possibleToFlip = possibleToFlip;
         this.registrationNumber = registrationNumber;
         this.productBrittle = productBrittle;
-        this.dimensions = dimensions;
+        this.cargoDimensions = cargoDimensions;
     }
 
-    public CourierService setWeight(int weight) { // чтобы сеттеры возвращали нам новые объекты класса.
-        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+    public CourierService setWeight(int weight) { // чтобы setter возвращали нам новые объекты класса.
+        return new CourierService(deliveryAddress, weight, registrationNumber, cargoDimensions);
     }
     public CourierService setDeliveryAddress(String deliveryAddress) {
-        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+        return new CourierService(deliveryAddress, weight, registrationNumber, cargoDimensions);
     }
-    public CourierService setDimensions(Dimensions dimensions) {
-        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+    public CourierService setDimensions(CargoDimensions dimensions) {
+        return new CourierService(deliveryAddress, weight, registrationNumber, cargoDimensions);
     }
     public CourierService setRegistrationNumber(String registrationNumber) {
-        return new CourierService(deliveryAddress, weight, registrationNumber, dimensions);
+        return new CourierService(deliveryAddress, weight, registrationNumber, cargoDimensions);
     }
 
     public int getWeight() {
@@ -45,14 +45,14 @@ public class CourierService {
     public boolean getProductBrittle() {
         return productBrittle;
     }
-    public Dimensions getDimensions() {
-        return dimensions;
+    public CargoDimensions getDimensions() {
+        return cargoDimensions;
     }
     public String toString() {
         return "масса: " + weight + "\n" +
                 "адрес доставки: " + deliveryAddress + "\n" +
                 "можно ли переворачивать:" + possibleToFlip + "\n" +
                 "регистрационный номер: " + registrationNumber + "\n" +
-                "хрупкий ли товар: " + productBrittle + "\n" + dimensions;
+                "хрупкий ли товар: " + productBrittle + "\n" + cargoDimensions;
     }
 }
