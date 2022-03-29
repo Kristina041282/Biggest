@@ -45,7 +45,7 @@ public class CourierService {
     public boolean getProductBrittle() {
         return productBrittle;
     }
-    public CargoDimensions getDimensions() {
+    public CargoDimensions getCargoDimensions() {
         return cargoDimensions;
     }
     public String toString() {
