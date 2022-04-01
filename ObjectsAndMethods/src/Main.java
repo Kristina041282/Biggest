@@ -1,24 +1,31 @@
 public class Main {
     public static void main(String[] args) {
 
-        CargoDimensions cargodimensions = new CargoDimensions(2,2,2);
+       // CargoDimensions cargodimensions = new CargoDimensions(3, 3, 3);
         //создали объект Dimensions.
 
-        CourierService courierService = new CourierService("Гете", 15,
-                "HGF", cargodimensions);
+       // CourierService courierService = new CourierService("Гете", 15,
+         //       "HGF", cargodimensions);
         //добавила эту информацию в курьер.службу, передала в конструктор адрес доставки, массу,
         // регистр.номер и габариты груза.
 
-        System.out.println(courierService);//вывожу информацию о грузе (которая в себе содержит
+        //System.out.println(courierService);//вывожу информацию о грузе (которая в себе содержит
         //габариты груза).
 
+        Basket basket = new Basket();
+        basket.add("Milk", 30,1,5);
+        basket.print("Корзина 1");
+
+        basket = new Basket(1000);
+        basket.add("Sugar", 10,1,6);
+        basket.add("butter",5,3,5);
+        basket.print("Корзина 2");
 
 
-
-
-
-
+        System.out.println("Всего у нас: " + Basket.getCount() + " " +"корзины. " +
+                "\n " + "Общая стоимость за товары во всех корзинах: "
+                + Basket.getTotalCost() + " " + "руб." + "\n" +
+               "Общее кол-во товаров во всех корзинах: " + Basket.getTotalAmount() + " " + "шт");
 
     }
-
 }
