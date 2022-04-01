@@ -13,7 +13,8 @@ public class Main {
         //габариты груза).
 
         Basket basket = new Basket();
-        basket.add("Milk", 30,1,5);
+        basket.add("Milk", 20,1,5);
+        basket.add("water", 10, 1,2);
         basket.print("Корзина 1");
 
         basket = new Basket(1000);
@@ -25,7 +26,9 @@ public class Main {
         System.out.println("Всего у нас: " + Basket.getCount() + " " +"корзины. " +
                 "\n " + "Общая стоимость за товары во всех корзинах: "
                 + Basket.getTotalCost() + " " + "руб." + "\n" +
-               "Общее кол-во товаров во всех корзинах: " + Basket.getTotalAmount() + " " + "шт");
+               "Общее кол-во товаров во всех корзинах: " + Basket.getTotalAmount() + " " + "шт" +
+                "\n" + "Средняя цена за товар во всех корзинах: " + Basket.getTotalAveragePrice() +
+                "\n" + "Средняя стоимость корзин: " + Basket.getAveragePrice());
 
     }
 }
