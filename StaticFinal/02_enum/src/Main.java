@@ -3,13 +3,5 @@ public class Main {
 
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(7, 4, Operation.MULTIPLY);
 
-
-
-
-
-
-
-
-
     }
 }
