@@ -11,11 +11,6 @@ public class Computer {
     public Computer(String vendor, String name) {
         this.vendor = vendor;
         this.name = name;
-        this.processor = processor;
-        this.ram = ram;
-        this.informationAccumulator = informationAccumulator;
-        this.screen = screen;
-        this.keyBoard = keyBoard;
     }
     public void add(int weightProcessor, int weightRA, int weightInformationAccumulator,
                     int diagonalScreen, int weightKeyBoard) { //метод расчёта общей массы компьютера, возвращающий
