@@ -12,34 +12,43 @@ public class Computer {
         this.vendor = vendor;
         this.name = name;
     }
-    public void add(int weightProcessor, int weightRA, int weightInformationAccumulator,
+    public void add(int weightProcessor, int weightRAM, int weightInformationAccumulator,
                     int diagonalScreen, int weightKeyBoard) { //метод расчёта общей массы компьютера, возвращающий
         // суммарный вес всех его комплектующих.
-        totalWeight = weightProcessor + weightRA + weightInformationAccumulator + diagonalScreen +
+        totalWeight = weightProcessor + weightRAM + weightInformationAccumulator + diagonalScreen +
                 weightKeyBoard;
     }
 
-    public void setProcessor(Processor processor) {this.processor = processor;
+    public void setProcessor(Processor processor) {
+        this.processor = processor;
     }
-    public Processor getProcessor() {return processor;
+    public Processor getProcessor() {
+        return processor;
     }
-    public void setRAM(RAM RAM) {this.ram = ram;
+    public void setRAM(RAM ram) {
+        this.ram = ram;
     }
-    public RAM getRam() {return ram;
+    public RAM getRam() {
+        return ram;
     }
     public void setInformationAccumulator(InformationAccumulator InformationAccumulator) {
         this.informationAccumulator = informationAccumulator;
     }
-    public InformationAccumulator getInformationAccumulator() {return informationAccumulator;
+    public InformationAccumulator getInformationAccumulator() {
+        return informationAccumulator;
     }
-    public void setScreen(Screen Screen) {this.screen = screen;
+    public void setScreen(Screen Screen) {
+        this.screen = screen;
     }
-    public Screen getScreen() {return screen;
+    public Screen getScreen() {
+        return screen;
     }
-    public void setKeyBoard(KeyBoard KeyBoard) {this.keyBoard = keyBoard;
+    public void setKeyBoard(KeyBoard KeyBoard) {
+        this.keyBoard = keyBoard;
     }
 
-    public KeyBoard getKeyBoard() {return keyBoard;
+    public KeyBoard getKeyBoard() {
+        return keyBoard;
     }
 
     public String toString() { //возвращает содержимое этого класса.
