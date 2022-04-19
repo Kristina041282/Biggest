@@ -12,11 +12,14 @@ public class Computer {
         this.vendor = vendor;
         this.name = name;
     }
-    public void add(int weightProcessor, int weightRAM, int weightInformationAccumulator,
-                    int diagonalScreen, int weightKeyBoard) { //метод расчёта общей массы компьютера, возвращающий
-        // суммарный вес всех его комплектующих.
-        totalWeight = weightProcessor + weightRAM + weightInformationAccumulator + diagonalScreen +
-                weightKeyBoard;
+
+    public void add() {
+        totalWeight =  processor.getWeightProcessor() + informationAccumulator.getWeightInformationAccumulator() +
+                ram.getWeightRAM() + screen.getWeightScreen() + keyBoard.getWeightKeyBoard();
+    }
+
+    public int getTotalWeight() {
+        return totalWeight;
     }
 
     public void setProcessor(Processor processor) {
