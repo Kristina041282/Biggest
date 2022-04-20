@@ -2,7 +2,7 @@ public class Screen {  // экран
     private int weightScreen;  // вес
     private int diagonalScreen;         // диагональ
 
-    public Screen(int weightScreen) {
+    public Screen(int weightScreen, TypeScreen screen) {
         this.weightScreen = weightScreen;
     }
 

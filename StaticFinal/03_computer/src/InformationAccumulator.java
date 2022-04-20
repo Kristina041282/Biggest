@@ -2,7 +2,7 @@ public class InformationAccumulator { // накопитель информаци
     private int volumeInformationAccumulator;  // объем
     private int weightInformationAccumulator;  // вес
 
-    public InformationAccumulator(int weightInformationAccumulator) {
+    public InformationAccumulator(int weightInformationAccumulator, TypeInformationAccumulator informationAccumulator) {
         this.weightInformationAccumulator = weightInformationAccumulator;
     }
 

@@ -1,7 +1,7 @@
 public class Computer {
     private final String vendor; // производитель
     private final String name;   // название
-    private int totalWeight = 0; // общая масса компьютера
+    //private int totalWeight = 0; // общая масса компьютера
     private Processor processor; // переменная названа именем класса, чтобы создать сеттер и геттер
     private RAM ram;
     private InformationAccumulator informationAccumulator;
@@ -13,13 +13,9 @@ public class Computer {
         this.name = name;
     }
 
-    public void add() {
-        totalWeight =  processor.getWeightProcessor() + informationAccumulator.getWeightInformationAccumulator() +
-                ram.getWeightRAM() + screen.getWeightScreen() + keyBoard.getWeightKeyBoard();
-    }
-
     public int getTotalWeight() {
-        return totalWeight;
+        return processor.getWeightProcessor() + informationAccumulator.getWeightInformationAccumulator() +
+                ram.getWeightRAM() + screen.getWeightScreen() + keyBoard.getWeightKeyBoard();
     }
 
     public void setProcessor(Processor processor) {
@@ -58,7 +54,7 @@ public class Computer {
         return "Производитель:" + vendor + "\n" + "Название:" + name + "\n" + "Processor:" + processor +
                 "\n" + "RAM: " + ram + "\n" + "InformationAccumulator: " + informationAccumulator + "\n" +
                 "Screen: " + screen + "\n" + "KeyBoard: " + keyBoard + "\n" +
-                "Cуммарный вес всех комплектующих:" + " " + totalWeight;
+                "Cуммарный вес всех комплектующих:" + " " + getTotalWeight();
     }
 }
 
