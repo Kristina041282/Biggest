@@ -30,19 +30,19 @@ public class Computer {
     public RAM getRam() {
         return ram;
     }
-    public void setInformationAccumulator(InformationAccumulator InformationAccumulator) {
+    public void setInformationAccumulator(InformationAccumulator informationAccumulator) {
         this.informationAccumulator = informationAccumulator;
     }
     public InformationAccumulator getInformationAccumulator() {
         return informationAccumulator;
     }
-    public void setScreen(Screen Screen) {
+    public void setScreen(Screen screen) {
         this.screen = screen;
     }
     public Screen getScreen() {
         return screen;
     }
-    public void setKeyBoard(KeyBoard KeyBoard) {
+    public void setKeyBoard(KeyBoard keyBoard) {
         this.keyBoard = keyBoard;
     }
 
