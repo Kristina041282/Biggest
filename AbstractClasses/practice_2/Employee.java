@@ -1,4 +1,5 @@
-public interface Employee extends Comparable<Employee> {//имплементс не получается написать потому что это уже интерфейс, поэтому пишем extends
+public interface Employee extends Comparable<Employee> {//имплементс не получается написать потому что это уже интерфейс,
+    // поэтому пишем extends
 
 
     double getMonthSalary();//метод возвращающий месячную з/п
