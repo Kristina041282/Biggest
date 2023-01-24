@@ -25,3 +25,7 @@ public class Customer {
         return name + " - " + email + " - " + phone;
     }
 }
+//<loggers>
+//<root level="error">
+//</root>
+//</loggers>
