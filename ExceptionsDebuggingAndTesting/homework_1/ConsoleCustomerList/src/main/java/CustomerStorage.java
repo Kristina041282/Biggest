@@ -26,13 +26,14 @@ public class CustomerStorage {
 
             if (components.length != 4) {
                 logger.error("Произошла ошибка, введите корректно данные:");
-                throw new IndexOutOfBoundsException("Please write the correct format");
+                throw new IllegalArgumentException("Please write the correct format");
             }
 
             if (!components[INDEX_PHONE].matches(regexPhone)) {//если введен номер не корректно, то бросим исключение
                 logger.error("Произошла ошибка, введите корректно номер:");
                 throw new IllegalArgumentException("Please write the correct phone number");
             }
+
             if (!components[INDEX_EMAIL].matches(regexEmail)) {
                 logger.error("Произошла ошибка, введите корректно email:");
                 throw new IllegalArgumentException("Please write the correct email");
