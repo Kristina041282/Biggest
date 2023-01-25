@@ -25,7 +25,7 @@ public class Main {
             try {
                 if (tokens[0].equals("add")) {
                     executor.addCustomer(tokens[1]);
-                    logger.info("Добавили сотрудника в список");
+                    //logger.info("Добавили сотрудника в список");
                 } else if (tokens[0].equals("list")) {
                     executor.listCustomers();
                 } else if (tokens[0].equals("remove")) {
@@ -37,12 +37,11 @@ public class Main {
                 } else {
                     System.out.println(COMMAND_ERROR);
                 }
-            }
-            catch (IllegalArgumentException ex) {
+            } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
-                //logger.info("Произошла ошибка, введите корректно данные:" + ADD_COMMAND);
-                //logger.log(Level.WARN, "Сообщение об ошибке");
             }
         }
     }
 }
+
+
