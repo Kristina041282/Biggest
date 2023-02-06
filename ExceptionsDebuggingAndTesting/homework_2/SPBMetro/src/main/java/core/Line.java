@@ -37,9 +37,9 @@ public class Line implements Comparable<Line>
     }
 
     @Override
-    public int compareTo(Line line)
-    {
-        return Integer.compare(number, line.getNumber());
+    public int compareTo(Line line) {//на вход пришла линия (ее номер и название)
+        return Integer.compare(number, line.getNumber());//Возвращает: compare возвращает ноль, если объекты равны. Он возвращает положительное значение, если obj1 больше, чем obj2.
+        // В противном случае возвращается отрицательное значение.
     }
 
     @Override
