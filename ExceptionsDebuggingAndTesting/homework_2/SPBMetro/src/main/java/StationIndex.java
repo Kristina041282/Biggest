@@ -28,7 +28,7 @@ public class StationIndex {
             if (!connections.containsKey(station)) {//проверяем: если в TreeMap connections нет в виде ключа станции которая пришла нам в параметры
                 connections.put(station, new TreeSet<>());//то мы кладем в TreeMap connections эту станцию и создаем новый объект в TreeSet
             }
-            TreeSet<Station> connectedStations = connections.get(station);//если же есть такая станция в TreeMap, то мы достаем ее из TreeMap и кладем в connectedStations
+            TreeSet<Station> connectedStations = connections.get(station);//если же есть такая станция в TreeMap, то мы достаем по индексу ее значение из TreeMap и кладем в connectedStations
             connectedStations.addAll(stations.stream()//(У пришедшего в параметры объекта вызываем стрим, у стрим - фильтр, он вернет нам
                     .filter(s -> !s.equals(station)).collect(Collectors.toList()));//только те станции которых нет в TreeSet) и мы добавим их в наш TreeSet connectedStations
         }
