@@ -23,14 +23,15 @@ public class StationIndex {
         number2line.put(line.getNumber(), line);//а точнее номер, который возвращает нам метод getLine и название линии
     }
 
+
     public void addConnection(List<Station> stations) {
         for (Station station : stations) {//проходимся по списку класса Station : принятым в параметры объектом класса Station
             if (!connections.containsKey(station)) {//проверяем: если в TreeMap connections нет в виде ключа станции которая пришла нам в параметры
                 connections.put(station, new TreeSet<>());//то мы кладем в TreeMap connections эту станцию и создаем новый объект в TreeSet
             }
-            TreeSet<Station> connectedStations = connections.get(station);//если же есть такая станция в TreeMap, то мы достаем по индексу ее значение из TreeMap и кладем в connectedStations
-            connectedStations.addAll(stations.stream()//(У пришедшего в параметры объекта вызываем стрим, у стрим - фильтр, он вернет нам
-                    .filter(s -> !s.equals(station)).collect(Collectors.toList()));//только те станции которых нет в TreeSet) и мы добавим их в наш TreeSet connectedStations
+            TreeSet<Station> connectedStations = connections.get(station);//получается, кладем в наш список new TreeSet
+            connectedStations.addAll(stations.stream()//здесь заполняем connectedStations
+                    .filter(s -> !s.equals(station)).collect(Collectors.toList()));
         }
     }
 
@@ -39,24 +40,30 @@ public class StationIndex {
     }
 
     public Station getStation(String name) {
-        for (Station station : stations) {//прохожусь по списку stations
-            if (station.getName().equalsIgnoreCase(name)) {//если мы не находим станцию с таким же названием, что пришла в параметры
-                return station;//то возвращаем название этой станции
+        for (Station station : stations) {//прохожусь по списку TreeSet<Station> stations
+            if (station.getName().equalsIgnoreCase(name)) {//Сравнивает данную строку с другой строкой, игнорируя регистр. Две строки считаются равными, если они имеют одинаковую длину и
+                // соответствующие символы у двух строк равны, игнорируя регистр букв (то есть сравниваем название станции из полученного списка stations с названиваем пришедшим к нам на вход)
+                //В Java equalsIgnoreCase() возвращает значение true, если аргумент не равен null и строки равны, без учета регистра букв; в противном случае значение false.
+                return station;//если аргумент не равен null и строки равны вернет true (название станции)
             }
         }
-        return null;
+        return null;//в противном случае возвращаем null
     }
 
-    public Station getStation(String name, int lineNumber) {
-        Station query = new Station(name, getLine(lineNumber));
-        Station station = stations.ceiling(query);
-        return station.equals(query) ? station : null;
-        //assert station != null;
-        //return station.equals(query) ? station : null;
-    }
+    public Station getStation(String name, int lineNumber) {//приходит на вход название и номер линии
+        Station query = new Station(name, getLine(lineNumber));//создали переменную, присваиваем ей новый созданный объект(название и получаем через getLine(lineNumber который пришел на вход)
+        Station station = stations.ceiling(query);//ceiling - Возвращает наименьший элемент в этом наборе, больший или равный заданному элементу, или ноль, если такого элемента нет
+        //if (station != null) {
+            return station.equals(query) ? station : null;
+            //assert station != null;
+            //return station.equals(query) ? station : null;
+        }
+        //return query;
+    //}
+
 
     public Set<Station> getConnectedStations(Station station) {
-        return connections.containsKey(station) ?//если connections содержит ключ этой станции,
-                connections.get(station) : new TreeSet<>();//то возвращаем индекс этой станции, если же нет, то создаем для нее новый TreeSet
+        return connections.containsKey(station) ?//если connections содержит по ключу такую станцию,
+                connections.get(station) : new TreeSet<>();//то возвращаем индекс по которому находится станция в списке connections, если же нет, то создаем для нее новый TreeSet
     }
 }

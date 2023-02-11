@@ -15,12 +15,15 @@ public class RouteCalculator {
     public List<Station> getShortestRoute(Station from, Station to) {
         List<Station> route = getRouteOnTheLine(from, to);
         if (route != null) {
-            return route;
+                return route;
         }
 
         route = getRouteWithOneConnection(from, to);
-        if (route != null) {
-            return route;
+        if (route != null) {//isEmpty вернет true, если строка пустая, то есть ее длина равна 0. Но при этом сам объект String существует, null - это когда никакой строки вообще нет
+            if (!route.isEmpty()) {//Начиная с Java 7, рекомендуется использовать String.isEmpty() метод проверки наличия пустой строки в Java.
+                // Избегать NullPointerException если строка равна null, вызову метода должна предшествовать проверка null.
+                return route;
+            }
         }
 
         route = getRouteWithTwoConnections(from, to);
@@ -76,17 +79,15 @@ public class RouteCalculator {
         if (from.getLine().equals(to.getLine())) {//если отправление находится на одной линии с назначением
             return null;//то возвращаем null
         }
-
         List<Station> route = new ArrayList<>();//если все ок то создаем список
-
         List<Station> fromLineStations = from.getLine().getStations();//В 1 список попадают станции 1 линии до пересадки
         List<Station> toLineStations = to.getLine().getStations();//во 2 список попадают станции 2 линии от пересадки до конечной
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
                 if (isConnected(srcStation, dstStation)) {//Если они имеют соединение складываем станции в список way
                     ArrayList<Station> way = new ArrayList<>();//создаем список way
-                    way.addAll(getRouteOnTheLine(from, srcStation));//и кладем в него 2 станции отправления которые нам вернул метод getRouteOnTheLine
-                    way.addAll(getRouteOnTheLine(dstStation, to));//кладем в него 2 станции назначения которые нам вернул метод getRouteOnTheLine
+                    way.addAll(getRouteOnTheLine(from, srcStation));//и кладем в него станции отправления которые нам вернул метод getRouteOnTheLine
+                    way.addAll(getRouteOnTheLine(dstStation, to));//кладем в него станции назначения которые нам вернул метод getRouteOnTheLine
                     if (route.isEmpty() || route.size() > way.size()) {
                         route.clear();
                         route.addAll(way);//потом из него перекладываем в route предварительно его отчистив
@@ -118,18 +119,16 @@ public class RouteCalculator {
             return null;//то возвращаем null
         }
         ArrayList<Station> route = new ArrayList<>();//в противном случае создаем маршрут
-
         List<Station> fromLineStations = from.getLine().getStations();//в этот список попадают станции 1 линии до пересадки
         List<Station> toLineStations = to.getLine().getStations();//в этот список попадают станции 2 линии от пересадки до конечной
 
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
-                List<Station> connectedLineRoute =//далее складываем станции в созданный список connectedLineRoute
-                        getRouteViaConnectedLine(srcStation, dstStation);//(если эти линии пересекаются, а если нет, то получится положим null в список)
-
+                List<Station> connectedLineRoute =  getRouteViaConnectedLine(srcStation, dstStation);//далее создаем список и складываем в него станции
+                // (положим станции в случае, если эти линии пересекаются, если же нет, то получится ничего не положим, а точнее положим null)
                 if (connectedLineRoute == null) {//проверяем: если полученные данные == null (а это может случиться, Почему смотри (в методе getRouteViaConnectedLine)
                     continue;//то переходим(возвращаемся) к следующей итерации цикла
-                }                                      //как все ок то мы
+                }                                      //если все ок, то мы
                 List<Station> way = new ArrayList<>();//создаем новый список way
                 //if (getRouteOnTheLine(from, srcStation) != null) {
                     way.addAll(getRouteOnTheLine(from, srcStation));//кладем в way: 2 станции отправления которые прошли проверку в методе getRouteOnTheLine (проверку, чтобы быть на одной линии)
