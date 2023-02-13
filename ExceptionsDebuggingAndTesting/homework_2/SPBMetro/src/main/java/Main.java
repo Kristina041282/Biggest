@@ -27,10 +27,10 @@ public class Main {
 
             List<Station> route = calculator.getShortestRoute(from, to);
             System.out.println("Маршрут:");
-            printRoute(route);
+            printRoute(route);//получается, здесь выдает список станций нужных нам сделать, чтобы добраться от пункта отправления до пункта назначения
 
             System.out.println("Длительность: " +
-                    RouteCalculator.calculateDuration(route) + " минут");
+                    RouteCalculator.calculateDuration(route) + " минут");//здесь же, показывает время поездки
         }
     }
 
@@ -39,19 +39,19 @@ public class Main {
         return new RouteCalculator(stationIndex);
     }
 
-    private static void printRoute(List<Station> route) {
-        Station previousStation = null;
-        for (Station station : route) {
-            if (previousStation != null) {
-                Line prevLine = previousStation.getLine();
-                Line nextLine = station.getLine();
-                if (!prevLine.equals(nextLine)) {
+    private static void printRoute(List<Station> route) {//получаем на вход список
+        Station previousStation = null;//создали объект класса Station для того, чтобы здесь в будущем записывать предыдущую станцию
+        for (Station station : route) {//проходимся по списку route
+            if (previousStation != null) {//проверяем наш объект previousStation: если он != null
+                Line prevLine = previousStation.getLine();//то создаем объект Line и присваиваем ему getLine() полученную у нашего объекта previousStation
+                Line nextLine = station.getLine();//то создаем объект Line и присваиваем ему getLine() полученную у нашего объекта previousStation
+                if (!prevLine.equals(nextLine)) {//проверяем не находится ли они на одной линии, и если нет то
                     System.out.println("\tПереход на станцию " +
-                            station.getName() + " (" + nextLine.getName() + " линия)");
+                            station.getName() + " (" + nextLine.getName() + " линия)");//выводим в консоль информацию о пересадки на такую то линию
                 }
             }
-            System.out.println("\t" + station.getName());
-            previousStation = station;
+            System.out.println("\t" + station.getName());//если выше в if проверку не проходит, то печатаем название станции
+            previousStation = station;// и записываем в previousStation название станции
         }
     }
 
