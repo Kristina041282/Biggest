@@ -29,7 +29,8 @@ public class StationIndex {
             if (!connections.containsKey(station)) {//проверяем: если в TreeMap connections нет в виде ключа станции которая пришла нам в параметры
                 connections.put(station, new TreeSet<>());//то мы кладем в TreeMap connections эту станцию и создаем новый объект в TreeSet
             }
-            TreeSet<Station> connectedStations = connections.get(station);//получается, кладем в наш список new TreeSet
+            TreeSet<Station> connectedStations = connections.get(station);//присваиваем connectedStations ту самую ссылку в памяти, которую создали и положили в кол-цию
+            // connections.put(station, new TreeSet<>());  дословно мы вернули по ключу (station) new TreeSet
             connectedStations.addAll(stations.stream()//здесь заполняем connectedStations
                     .filter(s -> !s.equals(station)).collect(Collectors.toList()));
         }
@@ -43,7 +44,7 @@ public class StationIndex {
         for (Station station : stations) {//прохожусь по списку TreeSet<Station> stations
             if (station.getName().equalsIgnoreCase(name)) {//Сравнивает данную строку с другой строкой, игнорируя регистр. Две строки считаются равными, если они имеют одинаковую длину и
                 // соответствующие символы у двух строк равны, игнорируя регистр букв (то есть сравниваем название станции из полученного списка stations с названиваем пришедшим к нам на вход)
-                //В Java equalsIgnoreCase() возвращает значение true, если аргумент не равен null и строки равны, без учета регистра букв; в противном случае значение false.
+                //В Java equalsIgnoreCase() возвращает значение true, если аргумент не равен null и строки равны, без учета регистра букв; в противном случае значение false).
                 return station;//если аргумент не равен null и строки равны вернет true (название станции)
             }
         }
@@ -53,17 +54,17 @@ public class StationIndex {
     public Station getStation(String name, int lineNumber) {//приходит на вход название и номер линии
         Station query = new Station(name, getLine(lineNumber));//создали переменную, присваиваем ей новый созданный объект(название и получаем через getLine(lineNumber который пришел на вход)
         Station station = stations.ceiling(query);//ceiling - Возвращает наименьший элемент в этом наборе, больший или равный заданному элементу, или ноль, если такого элемента нет
-        //if (station != null) {
+        //сравниваем станцию со списка stations с новой созданной станцией query
             return station.equals(query) ? station : null;
-            //assert station != null;
-            //return station.equals(query) ? station : null;
+        //assert station != null;//в случае если она не равна null
+            //return station.equals(query) ? station : null;//если элемент который нам вернул ceiling такой же, как и query, то вернем станцию, если же нет, то вернем null
         }
-        //return query;
-    //}
+
+
 
 
     public Set<Station> getConnectedStations(Station station) {
-        return connections.containsKey(station) ?//если connections содержит по ключу такую станцию,
-                connections.get(station) : new TreeSet<>();//то возвращаем индекс по которому находится станция в списке connections, если же нет, то создаем для нее новый TreeSet
+        return connections.containsKey(station) ?//если в списке connections имеется по ключу такая станция,
+                connections.get(station) : new TreeSet<>();//то возвращаем индекс по которому находится эта станция в списке connections, если же нет, то создаем для нее новый TreeSet
     }
 }

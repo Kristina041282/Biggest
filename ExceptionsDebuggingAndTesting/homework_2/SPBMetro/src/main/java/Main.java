@@ -108,17 +108,17 @@ public class Main {
         });
     }
 
-    private static void parseStations(JSONObject stationsObject) {
-        stationsObject.keySet().forEach(lineNumberObject ->
+    private static void parseStations(JSONObject stationsObject) {//пришел на вход объект станций
+        stationsObject.keySet().forEach(lineNumberObject ->//мы берем у этого объекта ключи и проходясь по ним
         {
-            int lineNumber = Integer.parseInt((String) lineNumberObject);
-            Line line = stationIndex.getLine(lineNumber);
-            JSONArray stationsArray = (JSONArray) stationsObject.get(lineNumberObject);
-            stationsArray.forEach(stationObject ->
+            int lineNumber = Integer.parseInt((String) lineNumberObject);//присваиваем наши ключи переменной int lineNumber
+            Line line = stationIndex.getLine(lineNumber);//затем присваиваем объекту Line line вернувшиеся номера линий (те же ключи)
+            JSONArray stationsArray = (JSONArray) stationsObject.get(lineNumberObject);//затем разбираем на массив наши полученные ключи из пришедшего в параметры объекта станций
+            stationsArray.forEach(stationObject ->//далее проходимся по этому массиву с помощью forEach
             {
-                Station station = new Station((String) stationObject, line);
-                stationIndex.addStation(station);
-                line.addStation(station);
+                Station station = new Station((String) stationObject, line);//и присваиваем к объекту Station station новый Station вкладывая в него ключ и номер линии
+                stationIndex.addStation(station);//и кладем станцию в метод addStation из класса stationIndex
+                line.addStation(station);//и в Line кладем станцию
             });
         });
     }

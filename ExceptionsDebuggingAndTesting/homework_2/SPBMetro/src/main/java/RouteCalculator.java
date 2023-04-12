@@ -33,14 +33,15 @@ public class RouteCalculator {
 
     public static double calculateDuration(List<Station> route) {
         double duration = 0;
-        Station previousStation = null;
-        for (int i = 0; i < route.size(); i++) {
-            Station station = route.get(i);
+        Station previousStation = null;//создали переменную класса Station
+        for (int i = 0; i < route.size(); i++) {//проходимся по циклу
+            Station station = route.get(i);//достаем по индексу станцию из списка route и присваиваем ее к созданной переменной класса Station
             if (i > 0) {
-                duration += previousStation.getLine().equals(station.getLine()) ?//если предыдущая линия находится на той же линии которую получили из цикла, то
-                        INTER_STATION_DURATION : INTER_CONNECTION_DURATION;//это приравниваем к переменной duration 2,5 минуты иначе 3,5 минуты
+                duration += previousStation.getLine().equals(station.getLine()) ?//присваиваем duration (тернарный оператор) если предыдущая линия находится на той же линии которую получили
+                        // из цикла, то приравниваем к переменной duration 2,5 минуты, если не на одной линии то 3,5 минуты
+                        INTER_STATION_DURATION : INTER_CONNECTION_DURATION;
             }
-            previousStation = station;
+            previousStation = station;//если условие в if не выполнилось, то кладем в нашу previousStation = station, тем самым у нас всегда есть предыдущая станция
         }
         return duration;//возвращаем полученный результат
     }
@@ -52,7 +53,7 @@ public class RouteCalculator {
         List<Station> route = new ArrayList<>();//в противном случае создаем список
         List<Station> stations = from.getLine().getStations();//кладем в него полученную линию от from и у from получаем методом getStations()-return stations: private List<Station> stations;
         int direction = 0;
-        for (Station station : stations) {//проходимся по нашему списку List<Station> stations
+        for (Station station : stations) {//проходимся по списку List<Station> stations
             if (direction == 0) {
                 if (station.equals(from)) {//проверяем полученная станция соответствует ли станции отправления, если да
                     direction = 1;//то задаем нашей переменной значение 1
@@ -129,8 +130,9 @@ public class RouteCalculator {
                 // (положим станции в случае, если эти линии пересекаются, если же нет, то получится ничего не положим, а точнее положим null)
                 if (connectedLineRoute == null) {//проверяем: если полученные данные == null (а это может случиться, Почему смотри (в методе getRouteViaConnectedLine)
                     continue;//то переходим(возвращаемся) к следующей итерации цикла
-                }                                      //если все ок, то мы
+                } //если все ок, то мы
                 //List<Station> way = new ArrayList<>();//создаем новый список way
+                //ArrayList<Station> way = new ArrayList<>();//создаем новый список way//ибо можно просто прописать ArrayList а не List как прописали специально, чтобы ввести в заблуждение
                     route.addAll(getRouteOnTheLine(from, srcStation));//кладем в way: 2 станции отправления которые прошли проверку в методе getRouteOnTheLine (проверку, чтобы быть на одной линии)
                     //way.addAll(Objects.requireNonNull(getRouteOnTheLine(from, srcStation)));//Objects.requireNonNull(), внутренне выдает исключение NullPointerException, если заданный
                 // объект(аргумент) равен null

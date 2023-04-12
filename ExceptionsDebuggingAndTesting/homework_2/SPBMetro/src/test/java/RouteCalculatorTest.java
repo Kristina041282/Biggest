@@ -9,6 +9,7 @@ public class RouteCalculatorTest extends TestCase {
     List<Station> r;
     List<Station> r1;
     List<Station> r2;
+    List<Station> r3;
     StationIndex stationIndex;//создала объект от класса StationIndex
     RouteCalculator routeCalculator;
 
@@ -17,6 +18,7 @@ public class RouteCalculatorTest extends TestCase {
         r = new ArrayList<>();
         r1 = new ArrayList<>();
         r2 = new ArrayList<>();
+        r3 = new ArrayList<>();
         stationIndex = new StationIndex();
         //создаю три линии (в классе Line конструктор public Line(int number, String name){ )
         Line line1 = new Line(1,"Red");
@@ -80,6 +82,9 @@ public class RouteCalculatorTest extends TestCase {
         r2.add(s7);
         r2.add(s8);
         //route2.add(c1.get(2));
+        //testRouteViaConnectedLine()
+        r3.add(s1);
+        r3.add(s4);
         //чтобы можно было использовать в тестировании, методы из класса RouteCalculator, создала объект от класса RouteCalculator и кладу в него наш список
         routeCalculator = new RouteCalculator(stationIndex);
     }
@@ -116,6 +121,11 @@ public class RouteCalculatorTest extends TestCase {
         //List<Station> actual = routeCalculator.getShortestRoute(r.get(0), r.get(6));
         List<Station> actual = routeCalculator.getShortestRoute(stationIndex.getStation("Невский проспект", 1),stationIndex.getStation("Чернышевская",3));
         List<Station> expected = r2;
+        assertEquals(expected, actual);
+    }
+    public void testRouteViaConnectedLine() {
+        List<Station> actual = routeCalculator.getShortestRoute(stationIndex.getStation("Невский проспект", 1),stationIndex.getStation("Гостиный двор", 2));
+        List<Station> expected = r3;
         assertEquals(expected, actual);
     }
 
