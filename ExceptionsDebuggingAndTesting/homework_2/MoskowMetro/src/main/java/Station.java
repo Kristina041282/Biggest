@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Station {
@@ -16,6 +17,7 @@ public class Station {
         this.name = name;
 
     }
+
     public void setName() {
         this.name = name;
 

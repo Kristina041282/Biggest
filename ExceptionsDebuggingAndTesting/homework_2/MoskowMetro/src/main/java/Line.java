@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,9 @@ public class Line {
     @JsonIgnore
     private List<Station> stations;
 
-
+    public Line() {
+        super();
+    }
     public Line(String number, String name) {
         this.number = number;
         this.name = name;
