@@ -1,29 +1,32 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Station {
 
     private String name;
-    //private Line lines;
-    private String numberLines;
+    private Line line;
+    public boolean hasConnection;
 
     public Station() {
-        super();
+
     }
 
-    public Station(String numberLines, String name) {
-        this.numberLines = numberLines;
+    public Station(String name, Line line) {
+        this.line = line;
         this.name = name;
+    }
 
+    public boolean setHasConnection(boolean hasConnection) {
+        this.hasConnection = hasConnection;
+        return hasConnection;
     }
 
     public void setName() {
         this.name = name;
 
     }
-    public void setNumberLines() {
-        this.numberLines = numberLines;
+    public void setLine() {
+        this.line = line;
 
     }
 
@@ -31,12 +34,14 @@ public class Station {
         return name;
     }
 
-    public String getNumberLines() {
-        return numberLines;
+    public Line getLine() {
+        return line;
     }
 
+    public boolean getHasConnection() { return hasConnection; }
+
     public String toString() {
-        return numberLines + name;
+        return line + name;
     }
 
 }

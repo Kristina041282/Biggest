@@ -1,12 +1,12 @@
 //этот класс нужен для связки с классом ParsingFiles
-public class FilesCsv {
+public class CsvFile {
 
     private String name;
-    String data;
+    private String date;
 
-    public FilesCsv(String name, String data) {
+    public CsvFile(String name, String date) {
         this.name = name;
-        this.data = data;
+        this.date = date;
     }
 
     public void setName(String name) {
@@ -16,15 +16,15 @@ public class FilesCsv {
         return name;
     }
 
-    public void setData(String data) {
-        //this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
     public String toString() {
-        return name + data;
+        return name + date;
     }
 }
