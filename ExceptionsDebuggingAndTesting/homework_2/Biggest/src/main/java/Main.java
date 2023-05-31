@@ -6,13 +6,18 @@ public class Main {
     public static void main(String[] args) {
 
         String folderPath = "C:/Users/user/Desktop/rasp";
-        File file = new File(folderPath);
+        File file = new File(folderPath);//здесь мы создали файл
+        Node root = new Node(file);//а здесь создали дерево, это будет корневая Node, добавили туда нашу папку
 
-        FolderSizeCalculator calculator = new FolderSizeCalculator(file);
+        FolderSizeCalculator calculator = new FolderSizeCalculator(root);//и дальше запускаю код по этой папке, мы просто получим размер
+        //вот это root содержит в себе папки и подпапки, можем запрашивать не у pool, а у нее root.getSize()
+        //FolderSizeCalculator calculator = new FolderSizeCalculator(file);
         ForkJoinPool pool = new ForkJoinPool();//позволяет запускать множество развлетляющихся потоков которые потом там собираются
-        long size = (long) pool.invoke(calculator);//этот метод invoke когда выполнится все, он вернет нам размер
-        System.out.println(getFolderSize(file));//просто распечатаем его
-        System.out.println(size);
+        pool.invoke(calculator);
+        //long size = (long) pool.invoke(calculator);//этот метод invoke когда выполнится все, он вернет нам размер
+        //System.out.println(getFolderSize(file));//просто распечатаем его
+        //System.out.println(size);
+        System.out.println(root.getSize());
 
 
         MyTread tread = new MyTread(1);
