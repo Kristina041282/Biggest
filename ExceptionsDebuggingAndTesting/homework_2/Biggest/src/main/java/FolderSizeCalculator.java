@@ -20,6 +20,8 @@ public class FolderSizeCalculator extends RecursiveTask {//позволяет с
     protected Long compute() {//метод compute() у унаследованного класса RecursiveTask возвращает какой-то тип данных
         File f = node.getFolder();
         if (f.isFile()) {
+            long length = f.length();
+            node.setSize(length);
             return f.length();
         }
         //if (folder.isFile()) {
@@ -35,7 +37,7 @@ public class FolderSizeCalculator extends RecursiveTask {//позволяет с
             //FolderSizeCalculator task = new FolderSizeCalculator(file);
             task.fork();//запускаем задачу асинхронно(то есть отделяем в отдельный поток)
             subTask.add(task);
-            node.addChild(child);
+            node.addChild(child);//в момент когда добавляем child у него обретается лимит его родителя
         }
         for (FolderSizeCalculator task : subTask) {//далее этот список подзадач собираем вот таким вот образом
             sum = (long)  task.join();
